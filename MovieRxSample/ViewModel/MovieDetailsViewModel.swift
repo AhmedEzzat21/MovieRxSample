@@ -29,7 +29,7 @@ class MovieDetailsViewModel {
 
     func getDetailMovies () {
 
-        
+        Loader.show()
         
         let provider = MoyaProvider<MovieAPI>()
         provider.rx.request(.MovieDetail(movieID: movieID)).subscribe { event in
@@ -43,10 +43,11 @@ class MovieDetailsViewModel {
 
                     
                     self.movieDetail.onNext(moviesResponse)
-                    
+                    Loader.hide()
                     
                 }catch {
                     print("error >>> \(error.localizedDescription)")
+                    Loader.hide()
                 }
                 
                 

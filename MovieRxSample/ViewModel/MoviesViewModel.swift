@@ -17,7 +17,7 @@ class MoviesViewModel {
 //    let provider: MoyaProvider<MovieAPI>
     func getMovies () {
  
-        
+        Loader.show()
         let provider = MoyaProvider<MovieAPI>()
         provider.rx.request(.getMovie).subscribe { event in
             
@@ -29,9 +29,10 @@ class MoviesViewModel {
                     let moviesResponse = try decoder.decode(MoviesResponse.self, from: response.data)
 
                     self.moviesList.value = moviesResponse.results ?? []
-                    
+                    Loader.hide()
                 }catch {
                     print("error >>> \(error.localizedDescription)")
+                    Loader.hide()
                 }
 
 
