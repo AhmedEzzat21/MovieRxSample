@@ -16,8 +16,8 @@ class MovieDetailsVC: UIViewController {
     @IBOutlet weak var moviePoster: UIImageView!
     @IBOutlet weak var lbl_Title: UILabel!
     @IBOutlet weak var lbl_ReleaseDate: UILabel!
-    @IBOutlet weak var lbl_OverView: UILabel!
-    
+   // @IBOutlet weak var lbl_OverView: UILabel!
+    @IBOutlet weak var lbl_OverView: UITextView!
     
     
     var movieDetailsViewModel : MovieDetailsViewModel!
