@@ -8,12 +8,14 @@
 
 
 import UIKit
+import Kingfisher
 
 class MovieTableViewCell: UITableViewCell {
 
     @IBOutlet weak var poster: UIImageView!
     @IBOutlet weak var lbl_Title: UILabel!
-    @IBOutlet weak var lbl_Genre: UILabel!
+    @IBOutlet weak var lbl_Year: UILabel!
+    var itemIndex: Int = 0
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -24,5 +26,13 @@ class MovieTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
+    func configure(result: MoviesModel, index: Int) {
+       self.itemIndex = index
+        if let urlStr = result.posterPath {
+            poster.kf.setImage(with: URL.init(string: "https://image.tmdb.org/t/p/w500\(urlStr)")! )
+        }
+       lbl_Title.text = result.title
+       lbl_Year.text =  result.releaseDate
+
+    }
 }
