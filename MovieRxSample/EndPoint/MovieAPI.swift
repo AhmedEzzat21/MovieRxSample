@@ -9,7 +9,7 @@
 import Foundation
 import Moya
 
-let PUBLIC_KEY = "c63b807fa4ece444d23a94e2ba3a7c5e"
+let PUBLIC_KEY = "c9856d0cb57c3f14bf75bdc6c063b8f3"
 
 enum MovieAPI {
 

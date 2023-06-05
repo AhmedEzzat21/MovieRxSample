@@ -14,19 +14,11 @@ import RxCocoa
 class MovieDetailsViewModel {
     
     private var movieID : Int
-    
-    
-    
     var movieDetail : ReplaySubject<MovieDetailModel> = ReplaySubject.create(bufferSize: 1)
-    
-    
-    
-    
     init(moveID : Int) {
         self.movieID = moveID
     }
     
-
     func getDetailMovies () {
 
         Loader.show()
@@ -60,6 +52,4 @@ class MovieDetailsViewModel {
         
         
     }
-    
-    
 }

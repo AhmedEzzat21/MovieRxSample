@@ -13,22 +13,19 @@ import RxCocoa
 
 class MoviesViewModel {
     
-    var moviesList : Variable<[MoviesModel]> = Variable([])
-//    let provider: MoyaProvider<MovieAPI>
+    var moviesList : BehaviorRelay<[MoviesModel]> = BehaviorRelay(value: [])
     func getMovies () {
- 
         Loader.show()
         let provider = MoyaProvider<MovieAPI>()
         provider.rx.request(.getMovie).subscribe { event in
-            
             switch event {
             case let .success(response):
-
                 do {
                     let decoder = JSONDecoder()
                     let moviesResponse = try decoder.decode(MoviesResponse.self, from: response.data)
+                    var value = moviesResponse.results ?? []
 
-                    self.moviesList.value = moviesResponse.results ?? []
+                    self.moviesList.accept(value)
                     Loader.hide()
                 }catch {
                     print("error >>> \(error.localizedDescription)")
