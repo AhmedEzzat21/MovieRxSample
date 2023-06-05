@@ -33,8 +33,7 @@ extension MovieAPI: TargetType {
         
         switch self {
         case .getMovie:
-            return "/3/movie/top_rated"
-            
+            return "/3/discover/movie"
         case .MovieDetail(let movieID):
             return "/3/movie/\(movieID)"
         }
